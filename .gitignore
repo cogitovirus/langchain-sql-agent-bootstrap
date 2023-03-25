@@ -1,5 +1,6 @@
-*venv/
+# python-venv
 *myenv/
+# env variables
 .env
 
 

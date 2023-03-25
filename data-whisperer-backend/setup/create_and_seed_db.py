@@ -30,7 +30,7 @@ def insert_data(conn, table, data):
 
 
 def main():
-    database = "sqlite_db/my_database.db"
+    database = "../sqlite_db/my_database.db"
 
     sql_create_table = """CREATE TABLE IF NOT EXISTS users (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
