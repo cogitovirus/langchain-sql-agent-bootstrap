@@ -8,26 +8,22 @@ python3 -m venv myenv
 source myenv/bin/activate
 # install dependencies
 pip install -r requirements.txt
-# run script
-python main.py
 # deactivate virtual environment after you are done
 deactivate
 ```
-### Install dependencies
+
+### Run db seed script
 ```bash
-pip install -r requirements.txt
+# run from project-root/data-whisperer-backend/
+python setup/create_and_seed_db.py
 ```
 
-
-
-### Database - fuck docker for now
+## Running the server
 ```bash
-docker pull keinos/sqlite3:latest
+# run from project-root/data-whisperer-backend/
+python run.py
 ```
 
-```bash
-docker run --rm -it -v "$(pwd):/workspace" -w /workspace keinos/sqlite3
-```
 
 ## Handy commands
 ```bash
