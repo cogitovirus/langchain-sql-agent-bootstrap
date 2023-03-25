@@ -1,7 +1,9 @@
 from flask import jsonify
 from . import app
-from .models import Customer, Order, Payment
+from .models import Customer, Order, Payment, db
 from .schemas import CustomerSchema, OrderSchema, PaymentSchema
+from sqlalchemy import inspect
+
 
 customers_schema = CustomerSchema(many=True)
 orders_schema = OrderSchema(many=True)
@@ -25,3 +27,10 @@ def get_payments():
     all_payments = Payment.query.all()
     result = payments_schema.dump(all_payments)
     return jsonify(result)
+
+@app.route('/api/v1/tables', methods=['GET'])
+def get_tables():
+    inspector = inspect(db.engine)
+    table_names = inspector.get_table_names()
+    return jsonify(table_names)
+

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { fetchUsers, User } from '../api';
+import { fetchCustomers, Customer } from '../api';
 
 const UserTable: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  const [customers, setCustomers] = useState<Customer[]>([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const data = await fetchUsers();
-      setUsers(data);
+      const data = await fetchCustomers();
+      setCustomers(data);
     };
     fetchUserData();
   }, []);
@@ -17,14 +17,16 @@ const UserTable: React.FC = () => {
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
+          <th>First Name</th>
+          <th>Last Name</th>
         </tr>
       </thead>
       <tbody>
-        {users.map((user) => (
-          <tr key={user.id}>
-            <td>{user.id}</td>
-            <td>{user.name}</td>
+        {customers.map((customer) => (
+          <tr key={customer.id}>
+            <td>{customer.id}</td>
+            <td>{customer.first_name}</td>
+            <td>{customer.last_name}</td>
           </tr>
         ))}
       </tbody>

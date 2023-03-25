@@ -1,0 +1,55 @@
+/* TableData.module.css */
+
+.table-container {
+    width: 100%;
+    display: block;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    word-wrap: break-word;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+
+  /* TableData.module.css */
+
+.tabpanel {
+    height: calc(100% - 40px); /* Adjust this value based on the height of your tab component */
+    overflow-y: auto; /* Add this to enable scrolling */
+    padding: 10px; /* Add padding for better layout */
+  }
+
+  .table-container {
+    width: 100%;
+    display: block;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    word-wrap: break-word;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }

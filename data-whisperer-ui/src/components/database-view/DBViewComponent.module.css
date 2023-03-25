@@ -1,0 +1,7 @@
+/* DBViewComponent.module.css */
+
+.db-view-component {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }

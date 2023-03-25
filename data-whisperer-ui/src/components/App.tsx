@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ChatComponent from "./ChatComponent";
-import DBViewComponent from "./DBViewComponent";
+import { DBViewComponent } from "./database-view/DBViewComponent";
 import SideDrawer from './SideDrawer';
 
 
