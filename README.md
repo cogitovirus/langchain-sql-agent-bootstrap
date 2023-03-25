@@ -1,10 +1,16 @@
 #
-activate venv
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-```
 
+```bash
+python3 -m venv myenv
+# activate virtual environment
+source myenv/bin/activate
+# install dependencies
+pip install -r requirements.txt
+# run script
+python main.py
+# deactivate virtual environment
+deactivate
+```
 
 # Getting Started with Create React App
 
