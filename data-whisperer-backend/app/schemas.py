@@ -1,11 +1,32 @@
-from . import ma
-from .models import User
-from marshmallow_sqlalchemy import auto_field
+from .models import Customer, Order, Payment
 
-class UserSchema(ma.SQLAlchemyAutoSchema):
+from marshmallow import fields
+from marshmallow.validate import Length
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+
+
+class CustomerSchema(SQLAlchemyAutoSchema):
     class Meta:
-        model = User
-        fields = ('id', 'name')
+        model = Customer
+        load_instance = True
 
-user_schema = UserSchema()
-users_schema = UserSchema(many=True)
+    first_name = fields.Str(required=True, validate=Length(max=100))
+    last_name = fields.Str(required=True, validate=Length(max=100))
+
+class OrderSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Order
+        load_instance = True
+
+    user_id = fields.Int(required=True)
+    order_date = fields.DateTime(required=True)
+    status = fields.Str(required=True, validate=Length(max=50))
+
+class PaymentSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Payment
+        load_instance = True
+
+    order_id = fields.Int(required=True)
+    payment_method = fields.Str(required=True, validate=Length(max=100))
+    amount = fields.Float(required=True)
