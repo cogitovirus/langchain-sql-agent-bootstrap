@@ -6,3 +6,13 @@
     align-items: center;
     background-color: lightcoral;
   }
+
+.output-box {
+    width: 100%; /* Adjust the width as needed */
+    height: 300px; /* Adjust the height as needed */
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

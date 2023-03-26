@@ -1,11 +1,19 @@
+import os
+
 from flask import Flask
+from flask_socketio import SocketIO
+
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
 
-import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
+
+
 # TODO: Remove CORS in production
 CORS(app)  # This will enable CORS for all routes
 
