@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ChatComponent from "./ChatComponent";
-import { DBViewComponent } from "./database-view/DBViewComponent";
-import SideDrawer from './SideDrawer';
+import ChatComponent from "./chat-view/ChatComponent";
+import { DBViewComponent } from "./database-view/DBViewComponent/DBViewComponent";
+import SideDrawer from './side-drawer/SideDrawer';
 
 
 const App: React.FC = () => {

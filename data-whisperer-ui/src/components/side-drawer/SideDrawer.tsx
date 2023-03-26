@@ -1,7 +1,7 @@
 // src/components/SideDrawer.tsx
 
 import React from 'react';
-import '../styles/SideDrawer.css';
+import './SideDrawer.css';
 
 interface SideDrawerProps {
   show: boolean;

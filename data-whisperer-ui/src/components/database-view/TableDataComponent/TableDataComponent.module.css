@@ -26,9 +26,9 @@
   /* TableData.module.css */
 
 .tabpanel {
-    height: calc(100% - 40px); /* Adjust this value based on the height of your tab component */
-    overflow-y: auto; /* Add this to enable scrolling */
-    padding: 10px; /* Add padding for better layout */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   .table-container {

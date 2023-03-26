@@ -1,14 +1,14 @@
 // TableData.tsx
 
 import React, { useEffect, useState } from "react";
-import { fetchTableData } from "../../api/index";
-import styles from "./TableData.module.css";
+import { fetchTableData } from "../../../api/index";
+import styles from "./TableDataComponent.module.css";
 
 interface TableDataProps {
   tableName: string;
 }
 
-export const TableData: React.FC<TableDataProps> = ({ tableName }) => {
+export const TableDataComponent: React.FC<TableDataProps> = ({ tableName }) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [tableHeaders, setTableHeaders] = useState<string[]>([]);
 

@@ -5,8 +5,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { fetchTables } from "../../api/index"
-import { TableData } from "./TableData";
+import { fetchTables } from "../../../api/index"
+import { TableDataComponent } from "../TableDataComponent/TableDataComponent";
 import "./DBViewComponent.module.css";
 
 
@@ -51,7 +51,7 @@ export const DBViewComponent: React.FC = () => {
     </Tabs>
     {tables.map((table, index) => (
       <TabPanel key={index} value={activeTab} index={index}>
-        <TableData tableName={table} />
+        <TableDataComponent tableName={table} />
       </TabPanel>
     ))}
   </div>

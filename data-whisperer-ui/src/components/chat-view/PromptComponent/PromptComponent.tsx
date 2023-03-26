@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import styles from './PromptComponent.module.css';
 import axios from "axios";
 
-const ChatComponent = () => {
+
+const PromptComponent: React.FC = () => {
     const [text, setText] = useState("");
     const [generatedText, setGeneratedText] = useState("");
 
@@ -34,21 +36,19 @@ const ChatComponent = () => {
         }
     };
 
-    return (
-        <div className="App">
-            <h1>AI assisted SQL transformations</h1>
-            <input
-                type="text"
-                placeholder="Enter English text"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
-            <button onClick={generateText}>Generate French translation</button>
-            {generatedText && <p>Translation: {generatedText}</p>}
-        </div>
-
-    );
-
+  return (
+    <div className={styles.promptComponent}>
+      <h1>AI assisted SQL transformations</h1>
+        <input
+            type="text"
+            placeholder="Enter English text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+        />
+        <button onClick={generateText}>Generate French translation</button>
+        {generatedText && <p>Translation: {generatedText}</p>}
+    </div>
+  );
 };
 
-export default ChatComponent;
+export default PromptComponent;
