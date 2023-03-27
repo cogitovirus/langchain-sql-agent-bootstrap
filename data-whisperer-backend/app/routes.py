@@ -2,6 +2,9 @@ import os
 import requests
 import sys
 
+from contextlib import contextmanager, redirect_stdout
+import re
+
 import io
 from contextlib import redirect_stdout
 import mock
@@ -17,6 +20,22 @@ from flask_socketio import emit
 from . import app
 from .models import Customer, Order, Payment, db
 from .schemas import CustomerSchema, OrderSchema, PaymentSchema
+
+@contextmanager
+def st_capture(output_function):
+    with io.StringIO() as stdout, redirect_stdout(stdout):
+        old_write = stdout.write
+
+        def new_write(string):
+            ret = old_write(string)
+            output_function(escape_ansi(stdout.getvalue()))
+            return ret
+
+        stdout.write = new_write
+        yield
+
+def escape_ansi(line):
+    return re.compile(r'(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]').sub('', line)
 
 
 # Get the absolute path of the current file
@@ -53,9 +72,6 @@ def get_tables():
 
 @app.route('/api/v1/run', methods=['POST'])
 def run():
-    # API_KEY = os.environ['OPENAI_API_KEY']
-    # API_URL = "https://api.openai.com/v1/chat/completions"
-
     # Construct the absolute path of the database file
     db_path = os.path.join(base_path, '..', 'sqlite_db', 'my_database.db')
 
@@ -72,54 +88,18 @@ def run():
 
     request_data = request.get_json()
     command = request_data.get("command", "")
-    # print(command)
 
-    # return jsonify({"command": command})
-
-    # agent_executor.run(command)
-
-    # Wrap the print function to emit the output
     def emit_print(*args, **kwargs):
         message = " ".join(str(a) for a in args)
-        emit('output', {'message': message}, namespace='/', broadcast=True)
-        sys.stdout.write(message + "\n")
+
+        # Use the escape_ansi function to remove ANSI escape codes before emitting the message
+        escaped_message = escape_ansi(message)
+
+        emit('output', {'message': escaped_message}, namespace='/', broadcast=True)
+        sys.stdout.write(escaped_message + "\n")
         sys.stdout.flush()
 
+    with mock.patch('builtins.print', emit_print):
+        agent_executor.run(command)
 
-
-    with io.StringIO() as buf, redirect_stdout(buf):
-        # Replace the print function with our custom function
-        with mock.patch('builtins.print', emit_print):
-            agent_executor.run(command)
-
-        output = buf.getvalue()
-
-    return jsonify({'result': output})
-
-    # return jsonify({"command": command})
-
-    # headers = {
-    #     "Content-Type": "application/json",
-    #     "Authorization": f"Bearer {API_KEY}",
-    # }
-
-    # request_data = request.get_json()
-    # command = request_data.get("command", "")
-
-    # messages = [
-    #     {"role": "system", "content": "You are a helpful assistant that translates English to French."},
-    #     {"role": "user", "content": f'Translate the following English text to French: "{command}"'}
-    # ]
-
-    # data = {
-    #     "model": "gpt-3.5-turbo",
-    #     "messages": messages,
-    #     "max_tokens": 50,
-    # }
-
-    # response = requests.post(API_URL, json=data, headers=headers)
-
-    # if response.status_code == 200:
-    #     return jsonify(response.json())
-    # else:
-    #     return jsonify({"error": "Error generating text"}), response.status_code
+    return jsonify({'running': command})
