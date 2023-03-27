@@ -5,6 +5,9 @@
     justify-content: center;
     align-items: center;
     background-color: lightcoral;
+    /* quick fix no 123456 */
+    padding-left: 300px
+
 }
 
 .output-box {
