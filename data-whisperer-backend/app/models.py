@@ -15,17 +15,13 @@ class Customer(db.Model):
 
 class Order(db.Model):
     __tablename__ = 'orders'
+
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('customers.id'), nullable=False)
-    order_date = db.Column(db.DateTime, nullable=False)
+    order_date = db.Column(db.String(50), nullable=False)
     status = db.Column(db.String(50), nullable=False)
-    payments = db.relationship('Payment', backref='orders', lazy=True)
 
-    def __repr__(self):
-        return f"<Order {self.id}: {self.status}>"
-
-    def __init__(self, name):
-        self.name = name
+    # customer = db.relationship('Customer', backref='orders')
 
 class Payment(db.Model):
     __tablename__ = 'payments'

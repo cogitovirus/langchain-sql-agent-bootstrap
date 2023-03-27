@@ -19,8 +19,9 @@ class OrderSchema(SQLAlchemyAutoSchema):
         load_instance = True
 
     user_id = fields.Int(required=True)
-    order_date = fields.DateTime(required=True)
+    order_date = fields.Str(required=True, validate=Length(max=50))
     status = fields.Str(required=True, validate=Length(max=50))
+
 
 class PaymentSchema(SQLAlchemyAutoSchema):
     class Meta:
