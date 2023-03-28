@@ -1,7 +1,9 @@
-from app import app
+from app import create_app
+from app.config import Config
 from flask_socketio import SocketIO
 
-socketio = SocketIO(app, cors_allowed_origins='http://localhost:3000')
 
 if __name__ == '__main__':
+    app = create_app(Config)
+    socketio = SocketIO(app, cors_allowed_origins='http://localhost:3000')
     socketio.run(app, debug=True)

@@ -1,27 +1,24 @@
-import os
+# app/__init__.py
 
 from flask import Flask
-from flask_socketio import SocketIO
-
-from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
 from flask_cors import CORS
+from .models import db, ma
+from .routes import main_blueprint
 
-from dotenv import load_dotenv
-load_dotenv()
+def create_app(config_object):
+    app = Flask(__name__)
+    app.config.from_object(config_object)
+
+    # TODO: CORS should be restricted to only the frontend domain on production
+    # This will enable CORS for all routes
+    CORS(app)
+
+    # database init
+
+    db.init_app(app)
+    ma.init_app(app)
 
 
-app = Flask(__name__)
+    app.register_blueprint(main_blueprint)
 
-
-# TODO: Remove CORS in production
-CORS(app)  # This will enable CORS for all routes
-
-basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'sqlite_db/my_database.db')}"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-ma = Marshmallow(app)
-
-from . import routes
+    return app
