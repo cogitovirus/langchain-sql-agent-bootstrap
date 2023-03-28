@@ -10,7 +10,7 @@ const PromptComponent: React.FC = () => {
 
   const generateText = async () => {
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL ||  'http://localhost:5000';
-    const API_URL = `${API_BASE_URL}/api/v1/run`;
+    const API_URL = `${API_BASE_URL}/api/v1/run-command`;
 
     const data = {
       command: text,
@@ -41,7 +41,7 @@ const PromptComponent: React.FC = () => {
   }, []);
 
   return (
-    <div className={styles.promptComponent}>
+    <div >
       <input
         type="text"
         placeholder="Enter command here"
@@ -51,7 +51,7 @@ const PromptComponent: React.FC = () => {
       <button onClick={generateText}>Generate SQL transformation</button>
       {generatedText && <p>Output: {generatedText}</p>}
       {/* Display the output */}
-      <pre id="output" className="output-box">{output}</pre>
+      <pre id="output" className={styles.outputBox}>{output}</pre>
     </div>
   );
 };

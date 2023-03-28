@@ -7,4 +7,5 @@
 
 # don't commit the db
 data-whisperer-backend/sqlite_db/my_database.db
+data-whisperer-backend/sqlite_db/test_database.db
 

@@ -38,7 +38,7 @@ base_path = os.path.abspath(os.path.dirname(__file__))
 @main_blueprint.route('/api/v1/run-command', methods=['POST'])
 def run_command():
     # Construct the absolute path of the database file
-    db_path = os.path.join(base_path, '..', 'sqlite_db', 'my_database.db')
+    db_path = os.path.join(base_path, '..','..','sqlite_db', 'my_database.db')
 
     # Create the database connection
     db = SQLDatabase.from_uri(f"sqlite:///{db_path}")
