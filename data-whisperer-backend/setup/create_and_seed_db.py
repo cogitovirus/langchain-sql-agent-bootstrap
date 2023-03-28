@@ -51,6 +51,7 @@ def insert_data(conn, sql_insert, data_path):
 
 def main():
     # run this script from root/data-whisperer-backend
+    # TODO: export this as a parameter
     database = "sqlite_db/my_database.db"
 
     sql_create_customers_table = """CREATE TABLE IF NOT EXISTS customers (

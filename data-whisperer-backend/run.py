@@ -1,5 +1,5 @@
 from app import create_app
-from app.config import Config
+from app.Config import Config
 from flask_socketio import SocketIO
 
 
