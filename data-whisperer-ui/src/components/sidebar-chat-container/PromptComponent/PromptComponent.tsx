@@ -42,7 +42,6 @@ const PromptComponent: React.FC = () => {
 
   return (
     <div className={styles.promptComponent}>
-      <h1>Data Whisperer v.0.00001</h1>
       <input
         type="text"
         placeholder="Enter command here"

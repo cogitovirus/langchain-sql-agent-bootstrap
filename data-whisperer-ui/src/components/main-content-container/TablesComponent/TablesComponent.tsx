@@ -1,4 +1,4 @@
-// DBViewComponent.tsx
+// src/components/main-content-container/TablesComponent/TablesComponent.tsx
 
 import React, { useEffect, useState } from "react";
 import Tabs from "@mui/material/Tabs";
@@ -7,8 +7,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { fetchTables } from "../../../api/index"
 import { TableDataComponent } from "../TableDataComponent/TableDataComponent";
-import "./DBViewComponent.module.css";
-
+import "./TablesComponent.module.css";
 
 
 interface TabPanelProps {
@@ -30,7 +29,7 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
-export const DBViewComponent: React.FC = () => {
+export const TablesComponent: React.FC = () => {
   const [tables, setTables] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState(0);
 
@@ -43,7 +42,7 @@ export const DBViewComponent: React.FC = () => {
   };
 
   return (
-    <div className="db-view-component">
+    <div className="tables-component">
     <Tabs value={activeTab} onChange={handleTabChange}>
       {tables.map((table, index) => (
         <Tab key={index} label={table} />

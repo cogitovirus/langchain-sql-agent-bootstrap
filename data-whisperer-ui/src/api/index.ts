@@ -14,14 +14,8 @@ export async function fetchTables(): Promise<string[]> {
   return data;
 }
 
-export async function fetchCustomers(): Promise<Customer[]> {
-  const response = await fetch(`${API_BASE_URL}/api/v1/customers`);
-  const data: Customer[] = await response.json();
-  return data;
-}
-
 export async function fetchTableData(tableName: string): Promise<any[]> {
-  const response = await fetch(`${API_BASE_URL}/api/v1/${tableName}`);
+  const response = await fetch(`${API_BASE_URL}/api/v1/tables/${tableName}`);
   const data = await response.json();
   return data;
 }

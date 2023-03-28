@@ -1,31 +1,25 @@
 import React, { useState } from "react";
-import ChatComponent from "./chat-view/ChatComponent";
-import { DBViewComponent } from "./database-view/DBViewComponent/DBViewComponent";
-import SideDrawer from './side-drawer/SideDrawer';
+import Header from "./Header";
+import Footer from "./Footer";
+import Sidebar from "./sidebar-chat-container/Sidebar";
+import MainContent from "./main-content-container/MainContent";
+import './../styles/styles.css';
+
 
 
 const App: React.FC = () => {
 
-  const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
-
-  const toggleSideDrawer = () => {
-    setSideDrawerOpen((prevState) => !prevState);
-  };
-
   return (
+    <div className="app">
+      <Header />
+    <main className="main">
+      <Sidebar />
+      <MainContent />
+    </main>
+    <Footer />
 
-    <div className="container">
-      {/* <div>
-        <button onClick={toggleSideDrawer}>Toggle Side Drawer</button>
-        <SideDrawer show={sideDrawerOpen} />
-      </div> */}
-      <div className="left">
-        <ChatComponent />
-      </div>
-      <div className="right">
-        <DBViewComponent />
-      </div>
-    </div>
+  </div>
+
   );
 };
 
