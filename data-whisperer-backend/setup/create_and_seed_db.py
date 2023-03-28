@@ -7,8 +7,8 @@ def create_connection(db_file):
     try:
         conn = sqlite3.connect(db_file)
         print(f"SQLite version {sqlite3.version} - Connected to {db_file}")
-    except Exception as e:
-        print(e)
+    except Exception as err:
+        print(err)
 
     return conn
 
@@ -17,8 +17,8 @@ def create_table(conn, create_table_sql):
     try:
         cursor = conn.cursor()
         cursor.execute(create_table_sql)
-    except Exception as e:
-        print(e)
+    except Exception as err:
+        print(err)
 
 
 def infer_data_type(value: str) -> Any:
@@ -46,8 +46,8 @@ def insert_data(conn, sql_insert, data_path):
         cursor.executemany(sql_insert, data)
         conn.commit()
         print(f"{cursor.rowcount} rows inserted.")
-    except Exception as e:
-        print(e)
+    except Exception as err:
+        print(err)
 
 def main():
     # run this script from root/data-whisperer-backend

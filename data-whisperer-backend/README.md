@@ -24,6 +24,11 @@ python setup/create_and_seed_db.py
 python run.py
 ```
 
+## Running tests
+```bash
+# run from project-root/data-whisperer-backend/
+pytest
+```
 
 ## Handy commands
 ```bash

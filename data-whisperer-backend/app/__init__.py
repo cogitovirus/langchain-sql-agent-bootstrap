@@ -13,9 +13,6 @@ def create_app(config_object):
     # This will enable CORS for all routes
     CORS(app)
 
-    # Print the database URI for debugging purposes
-    print(f"Database URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
-
     # database init
     db.init_app(app)
     ma.init_app(app)

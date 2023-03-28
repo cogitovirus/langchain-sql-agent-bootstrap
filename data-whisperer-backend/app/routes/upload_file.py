@@ -6,6 +6,8 @@ from flask import request, jsonify, current_app
 
 from . import main_blueprint
 from ..services import create_and_load_table
+from ..models import db
+
 
 ALLOWED_EXTENSIONS = {'csv'}
 
@@ -15,21 +17,19 @@ def allowed_file(filename):
 
 @main_blueprint.route('/api/v1/upload', methods=['POST'])
 def upload_file():
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            return jsonify({'error': 'No file part'}), 400
-        file = request.files['file']
-        if file.filename == '':
-            return jsonify({'error': 'No selected file'}), 400
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
 
-            file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
-            database = 'path/to/your/sqlite/db.sqlite'
-            table_name = 'your_table_name'
+        file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+        # Split the filename into name and extension and use the name as the table_name
+        table_name, _ = os.path.splitext(filename)
 
-            create_and_load_table(file_path, database, table_name)
-            return jsonify({'message': 'File uploaded and processed successfully'}), 200
+        create_and_load_table(file_path, db, table_name)
+        return jsonify({'message': 'File uploaded and processed successfully'}), 200
     return jsonify({'error': 'Invalid request'}), 400
-
