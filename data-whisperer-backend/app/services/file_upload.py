@@ -1,6 +1,6 @@
-import pandas as pd
 import sqlite3
 from sqlite3 import Error
+import pandas as pd
 
 def create_connection(database):
     conn = None
@@ -52,9 +52,3 @@ def create_and_load_table(file_path, database, table_name):
 
     # Close the connection
     conn.close()
-
-file_path = 'path/to/your/csv/file.csv'
-database = 'path/to/your/sqlite/db.sqlite'
-table_name = 'your_table_name'
-
-create_and_load_table(file_path, database, table_name)

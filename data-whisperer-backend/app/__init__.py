@@ -14,10 +14,8 @@ def create_app(config_object):
     CORS(app)
 
     # database init
-
     db.init_app(app)
     ma.init_app(app)
-
 
     app.register_blueprint(main_blueprint)
 
