@@ -7,7 +7,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { fetchTables } from "../../../api/index"
 import { TableDataComponent } from "../TableDataComponent/TableDataComponent";
-import "./TablesComponent.module.css";
+import styles from "./TablesComponent.module.css";
+
 
 
 interface TabPanelProps {
@@ -42,7 +43,7 @@ export const TablesComponent: React.FC = () => {
   };
 
   return (
-    <div className="tables-component">
+    <div className={styles.tableContainer}>
     <Tabs value={activeTab} onChange={handleTabChange}>
       {tables.map((table, index) => (
         <Tab key={index} label={table} />

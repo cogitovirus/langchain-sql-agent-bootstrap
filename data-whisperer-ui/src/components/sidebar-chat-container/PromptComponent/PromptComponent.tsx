@@ -41,7 +41,7 @@ const PromptComponent: React.FC = () => {
   }, []);
 
   return (
-    <div >
+    <div className={styles.Prompt}>
       <input
         type="text"
         placeholder="Enter command here"

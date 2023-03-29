@@ -1,0 +1,11 @@
+.Prompt {
+    width: auto;
+    height: 400px;
+    overflow: auto;
+}
+
+.outputBox {
+    max-width: 100%; /* Ensure that the outputBox doesn't exceed its parent container's width */
+    white-space: pre-wrap; /* Ensures that the text wraps instead of overflowing */
+    word-wrap: break-word; /* Allows long words to break and wrap to the next line */
+  }
