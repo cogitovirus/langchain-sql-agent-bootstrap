@@ -5,11 +5,10 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { fetchTables } from "../../../api/index"
+import { fetchTables } from "../../../api/index";
 import { TableDataComponent } from "../TableDataComponent/TableDataComponent";
-import styles from "./TablesComponent.module.css";
-
-
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 
 interface TabPanelProps {
   children: React.ReactNode;
@@ -43,17 +42,28 @@ export const TablesComponent: React.FC = () => {
   };
 
   return (
-    <div className={styles.tableContainer}>
-    <Tabs value={activeTab} onChange={handleTabChange}>
-      {tables.map((table, index) => (
-        <Tab key={index} label={table} />
-      ))}
-    </Tabs>
-    {tables.map((table, index) => (
-      <TabPanel key={index} value={activeTab} index={index}>
-        <TableDataComponent tableName={table} />
-      </TabPanel>
-    ))}
-  </div>
+    <Card>
+      <CardContent
+        sx={{
+          maxHeight: "400px",
+          overflow: "auto",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          borderRadius: "4px",
+          backgroundColor: "#fff",
+          padding: "1rem",
+        }}
+      >
+        <Tabs value={activeTab} onChange={handleTabChange} centered>
+          {tables.map((table, index) => (
+            <Tab key={index} label={table} />
+          ))}
+        </Tabs>
+        {tables.map((table, index) => (
+          <TabPanel key={index} value={activeTab} index={index}>
+            <TableDataComponent tableName={table} />
+          </TabPanel>
+        ))}
+      </CardContent>
+    </Card>
   );
 };

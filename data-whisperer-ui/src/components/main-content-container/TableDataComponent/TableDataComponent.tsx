@@ -1,7 +1,17 @@
-// TableData.tsx
+// TableDataComponent.tsx
 
 import React, { useEffect, useState } from "react";
 import { fetchTableData } from "../../../api/index";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+} from "@mui/material";
 import styles from "./TableDataComponent.module.css";
 
 interface TableDataProps {
@@ -23,27 +33,29 @@ export const TableDataComponent: React.FC<TableDataProps> = ({ tableName }) => {
 
   return (
     <div className={styles.tabpanel}>
-      <h3>{tableName}</h3>
-      <div className={styles.tableContainer}>
-        <table>
-          <thead>
-            <tr>
+      <Typography variant="h6" component="div">
+        {tableName}
+      </Typography>
+      <TableContainer component={Paper} className={styles.tableContainer}>
+        <Table>
+          <TableHead>
+            <TableRow>
               {tableHeaders.map((header, index) => (
-                <th key={index}>{header}</th>
+                <TableCell key={index}>{header}</TableCell>
               ))}
-            </tr>
-          </thead>
-          <tbody>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {tableData.map((row, rowIndex) => (
-              <tr key={rowIndex}>
+              <TableRow key={rowIndex}>
                 {tableHeaders.map((header, cellIndex) => (
-                  <td key={cellIndex}>{row[header]}</td>
+                  <TableCell key={cellIndex}>{row[header]}</TableCell>
                 ))}
-              </tr>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };

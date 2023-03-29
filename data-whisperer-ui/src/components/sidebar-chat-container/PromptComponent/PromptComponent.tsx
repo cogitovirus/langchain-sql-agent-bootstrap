@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { TextField, Button } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 import styles from './PromptComponent.module.css';
 import axios from "axios";
 import io from 'socket.io-client';
@@ -42,13 +44,27 @@ const PromptComponent: React.FC = () => {
 
   return (
     <div className={styles.Prompt}>
-      <input
-        type="text"
-        placeholder="Enter command here"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <button onClick={generateText}>Generate SQL transformation</button>
+      <div className={styles.inputContainer}>
+        <TextField
+          fullWidth
+          multiline
+          rows={4}
+          variant="outlined"
+          placeholder="Enter command here"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+      </div>
+      <div className={styles.buttonContainer}>
+        <Button
+          variant="contained"
+          color="primary"
+          endIcon={<SendIcon />}
+          onClick={generateText}
+        >
+          Generate SQL transformation
+        </Button>
+      </div>
       {generatedText && <p>Output: {generatedText}</p>}
       {/* Display the output */}
       <pre id="output" className={styles.outputBox}>{output}</pre>

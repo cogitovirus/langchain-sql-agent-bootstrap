@@ -1,8 +1,17 @@
+// Footer.tsx
 import React from 'react';
+import { Container, Box, Typography } from '@mui/material';
+import './Footer.module.css';
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <footer className="footer">
-    <p>Footer Content</p>
+    <Container maxWidth="lg">
+      <Box display="flex" justifyContent="center" py={2}>
+        <Typography variant="body1">
+          Copyright © 2023 cogitovirus.com
+        </Typography>
+      </Box>
+    </Container>
   </footer>
 );
 
