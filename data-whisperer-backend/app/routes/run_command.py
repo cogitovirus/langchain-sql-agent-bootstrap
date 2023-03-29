@@ -12,6 +12,8 @@ from langchain.sql_database import SQLDatabase
 from langchain.llms.openai import OpenAI
 from flask_socketio import emit
 from flask import request, jsonify
+from flask import current_app
+
 
 from . import main_blueprint
 
@@ -44,6 +46,15 @@ def run_command():
     db = SQLDatabase.from_uri(f"sqlite:///{db_path}")
 
     toolkit = SQLDatabaseToolkit(db=db)
+
+    model_name = current_app.config['MODEL_NAME']
+
+    # TODO:use a default model for now
+    # agent_executor = create_sql_agent(
+    #     llm=OpenAI(temperature=0, model_name=model_name),
+    #     toolkit=toolkit,
+    #     verbose=True
+    # )
 
     agent_executor = create_sql_agent(
         llm=OpenAI(temperature=0),

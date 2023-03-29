@@ -7,7 +7,7 @@ const Header: React.FC = () => (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Data Whisperer v.0.0.1
+          LangChain SQL Agent Bootstrap v.0.1
         </Typography>
         {/* <Button color="inherit">Menu Item 1</Button>
         <Button color="inherit">Menu Item 2</Button>

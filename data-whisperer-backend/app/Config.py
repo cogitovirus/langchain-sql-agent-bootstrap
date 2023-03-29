@@ -10,3 +10,4 @@ class Config:
     SQLALCHEMY_DATABASE_URI = f"sqlite:///{os.path.join(basedir, 'sqlite_db/my_database.db')}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_FOLDER = f"sqlite:///{os.path.join(basedir, 'uploads')}"
+    MODEL_NAME = os.environ.get('MODEL_NAME')
