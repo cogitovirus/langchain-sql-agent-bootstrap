@@ -20,11 +20,14 @@ Backend has several endpoints:
 
 ### Pre-requisites
 Backend was setup with Python 3.10.10
+
 Frontend was setup with Node 18.15.0
+
 Experience may vary with other versions
 
 You have to have an open-api-api-key to use the langchain sql agent.
-copy the `.env.example` file to `.env` and add your key to the `OPENAI_API_KEY` variable. You can also change the model which is used to make predictions. In the time of writing, `gpt-4` is in closed beta, so the backend might not work if you select that model.
+
+Copy the `.env.example` file to `.env` and add your key to the `OPENAI_API_KEY` variable. You can also change the model which is used to make predictions. In the time of writing, `gpt-4` is in closed beta, so the backend might not work if you select that model.
 
 ### Backend
 Create virtual environment (only need to do this once)
@@ -34,16 +37,13 @@ python3 -m venv data-whisperer-backend/myenv
 activate virtual environment
 ```bash
 source data-whisperer-backend/myenv/bin/activate
-```
-Install dependencies
-```bash
+# install dependencies
 pip install -r data-whisperer-backend/requirements.txt
 ```
 **seed the database**
 ```bash
 python data-whisperer-backend/setup/create_and_seed_db.py
 ```
-
 finally, run the backend
 ```bash
 python data-whisperer-backend/run.py
