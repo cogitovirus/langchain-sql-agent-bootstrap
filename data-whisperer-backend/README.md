@@ -1,4 +1,4 @@
-# SQL playground
+# Data Whisperer Flask Backend
 
 ## Setup
 ### Virtual environment

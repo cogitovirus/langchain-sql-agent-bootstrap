@@ -49,15 +49,8 @@ def run_command():
 
     model_name = current_app.config['MODEL_NAME']
 
-    # TODO:use a default model for now
-    # agent_executor = create_sql_agent(
-    #     llm=OpenAI(temperature=0, model_name=model_name),
-    #     toolkit=toolkit,
-    #     verbose=True
-    # )
-
     agent_executor = create_sql_agent(
-        llm=OpenAI(temperature=0),
+        llm=OpenAI(temperature=0, model_name=model_name),
         toolkit=toolkit,
         verbose=True
     )
