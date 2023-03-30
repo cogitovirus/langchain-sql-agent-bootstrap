@@ -56,8 +56,9 @@ def run_command():
     #     verbose=True
     # )
 
+    # Make sure to set the OPENAI_API_KEY environment variable to the actual API key value before running your application. 
     agent_executor = create_sql_agent(
-        llm=OpenAI(temperature=0),
+        llm=OpenAI(api_key=os.environ["OPENAI_API_KEY"],temperature=0),
         toolkit=toolkit,
         verbose=True
     )
