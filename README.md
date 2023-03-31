@@ -1,7 +1,8 @@
 # Langchain SQL Agent Bootstap
 This is a simple App for testing LLM to SQL commands on a sqlite database using [Langchain SQL Agent](https://python.langchain.com/en/latest/modules/agents/toolkits/examples/sql_database.html). The repo comes with a setup script that loads a sqlite database with some sample data.
 
-> There's a single important TODO item that is not and will not be completed, which is to implement the file upload functionality in the UI. The backend is already setup to handle file uploads (csv). If you're interested you could probably also:
+> This repo is intended to be a starter for Langchain and also a starter for programming with co-pilot GPT-4. The scope is small enough that you can even get by with copying/pasting whole clases to GPT-4 and asking for explanations or improvemnts to the code.
+>There's a single important TODO item that is not and will not be ever completed, which is to implement the file upload functionality in the UI.  The backend is already setup to handle file uploads (csv). If you're interested you could probably also:
 > - clean the ouput of the agent after each execution
 > - add a auto-refresh or a refresh button to the tables
 
