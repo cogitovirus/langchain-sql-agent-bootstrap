@@ -8,7 +8,7 @@ const Footer: React.FC = () => (
     <Container maxWidth="lg">
       <Box display="flex" justifyContent="center" py={2}>
         <Typography variant="body1">
-          Copyright © 2023 cogitovirus.com
+          2023 cogitovirus.com
         </Typography>
       </Box>
     </Container>
