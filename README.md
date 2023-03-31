@@ -1,5 +1,9 @@
 # Langchain SQL Agent Bootstap
-This is a simple App for testing LLM to SQL commands on a sqlite database using [Langchain SQL Agent](https://python.langchain.com/en/latest/modules/agents/toolkits/examples/sql_database.html). The repo comes with a setup script that loads a sqlite database with some sample data. You also have the ability to upload your own file (supports csv only)
+This is a simple App for testing LLM to SQL commands on a sqlite database using [Langchain SQL Agent](https://python.langchain.com/en/latest/modules/agents/toolkits/examples/sql_database.html). The repo comes with a setup script that loads a sqlite database with some sample data.
+
+> There's a single important TODO item that is not and will not be completed, which is to implement the file upload functionality in the UI. The backend is already setup to handle file uploads (csv). If you're interested you could probably also:
+> - clean the ouput of the agent after each execution
+> - add a auto-refresh or a refresh button to the tables
 
 Backend has several endpoints:
 - `/api/v1/tables` - returns a list of tables in the database
@@ -11,10 +15,6 @@ Backend has several endpoints:
 
 ![Example 1](images/whisp_10.PNG)
 ![Exampe 2](images/whisp_11.PNG)
-## TODOs
-- [ ] finish implemeting file upload to the UI (currently you can seed the db with `data-whisperer-backend/setup/create_and_seed_db.py`)
-- [ ] autorefresh for the tables after commands have been run
-- [ ] cleanup the langchain text on the next execute instead of appending to it
 
 ## Running locally
 
@@ -51,7 +51,7 @@ python data-whisperer-backend/run.py
 
 ### Frontend
 ```bash
-cd data-whisperer-ui/
+cd data-whisperer-frontend/
 npm install # only need to do this once
 npm start
 ```
